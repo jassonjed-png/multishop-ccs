@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    
     <title>MultiShop CCS - Importaciones VIP</title>
     <meta name="description" content="Lo mejor del mercado internacional con entrega inmediata en Caracas.">
     <meta property="og:title" content="MultiShop CCS - Tu Tienda de Confianza">
@@ -434,7 +439,7 @@
             apiKey: "AIzaSyABStoQHx1eP1UjdwM6XDcHfJk32SZjVdw",
             authDomain: "multishopccs-56e08.firebaseapp.com",
             projectId: "multishopccs-56e08",
-            storageBucket: "multishopccs-56e08.firebasestorage.app", // <--- ¡AQUÍ ESTÁ EL CAMBIO!
+            storageBucket: "multishopccs-56e08.firebasestorage.app", 
             appId: "1:254285227786:web:16e1f815b3a15d6e607cf3"
         };
         firebase.initializeApp(firebaseConfig);
@@ -730,7 +735,6 @@
         }
 
         function cerrarCheckout() {
-            // Pausar video al cerrar
             const videoTag = document.getElementById('modal-video');
             if(videoTag) videoTag.pause();
             
