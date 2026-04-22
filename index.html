@@ -891,7 +891,7 @@
                 let msj = `${tituloWP}%0A%0A👤 ${cNombre}%0A📦 ${compraActual.nombre} (x${cantidadSeleccionada})%0A💰 Pagado: $${totalMontoPagado}%0A%0A👀 Comprobante: ${urlComprobante}`;
                 
                 Swal.fire({ title: '¡Enviado!', text: 'Redirigiendo a WhatsApp...', icon: 'success', timer: 2000, showConfirmButton: false }).then(() => {
-                    window.open(`https://wa.link/gq8qur?text=${msj}`, '_blank');
+                    window.location.href = `https://wa.link/gq8qur?text=${msj}`;
                 });
             } catch (error) { Swal.fire('Error', 'Foto muy pesada.', 'error');
             } finally { 
@@ -947,7 +947,7 @@
                 let msj = `🛒 *CARRITO MULTISHOP CCS* 🛒%0A%0A👤 ${cNombre}%0A%0A*Artículos:*%0A${encodeURIComponent(detalleArticulos)}%0A💰 *Total Pagado:* $${totalMontoPagado.toFixed(2)}%0A%0A👀 Comprobante: ${urlComprobante}`;
                 
                 Swal.fire({ title: '¡Pedido Completo!', text: 'Redirigiendo a WhatsApp...', icon: 'success', timer: 2000, showConfirmButton: false }).then(() => {
-                    window.open(`https://wa.link/gq8qur?text=${msj}`, '_blank');
+                    window.location.href = `https://wa.link/gq8qur?text=${msj}`;
                 });
             } catch (error) { Swal.fire('Error', 'Foto muy pesada.', 'error');
             } finally { 
@@ -974,7 +974,7 @@
             const nombre = document.getElementById('enc-nombre').value.trim();
             if(!link || !nombre) { Swal.fire('Error', 'Faltan datos.', 'warning'); return; }
             cerrarEncargo();
-            window.open(`https://wa.link/gq8qur?text=✈️ *ENCARGO MULTISHOP* ✈️%0A%0ASoy ${nombre}. Cotízame:%0A${link}`, '_blank');
+            window.location.href = `https://wa.link/gq8qur?text=✈️ *ENCARGO MULTISHOP* ✈️%0A%0ASoy ${nombre}. Cotízame:%0A${link}`;
         }
     </script>
 </body>
