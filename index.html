@@ -888,10 +888,13 @@
 
                 cerrarCheckout();
                 let tituloWP = compraActual.tipo === 'preventa' ? '🚨 *NUEVO APARTADO* 🚨' : '🚨 *COMPRA DIRECTA* 🚨';
-                let msj = `${tituloWP}%0A%0A👤 ${cNombre}%0A📦 ${compraActual.nombre} (x${cantidadSeleccionada})%0A💰 Pagado: $${totalMontoPagado}%0A%0A👀 Comprobante: ${urlComprobante}`;
+                
+                // Creamos el mensaje usando saltos de línea normales (\n)
+                let msj = `${tituloWP}\n\n👤 ${cNombre}\n📦 ${compraActual.nombre} (x${cantidadSeleccionada})\n💰 Pagado: $${totalMontoPagado}\n\n👀 Comprobante: ${urlComprobante}`;
                 
                 Swal.fire({ title: '¡Enviado!', text: 'Redirigiendo a WhatsApp...', icon: 'success', timer: 2000, showConfirmButton: false }).then(() => {
-                    window.location.href = `https://wa.link/gq8qur?text=${msj}`;
+                    // Usamos la API de WhatsApp y codificamos el texto completo
+                    window.location.href = `https://api.whatsapp.com/send?phone=584129387217&text=${encodeURIComponent(msj)}`;
                 });
             } catch (error) { Swal.fire('Error', 'Foto muy pesada.', 'error');
             } finally { 
@@ -944,10 +947,12 @@
                 cerrarModalCarrito();
                 carrito = []; localStorage.removeItem('cart_ms'); actualizarIconosBadge();
 
-                let msj = `🛒 *CARRITO MULTISHOP CCS* 🛒%0A%0A👤 ${cNombre}%0A%0A*Artículos:*%0A${encodeURIComponent(detalleArticulos)}%0A💰 *Total Pagado:* $${totalMontoPagado.toFixed(2)}%0A%0A👀 Comprobante: ${urlComprobante}`;
+                // Creamos el mensaje del carrito
+                let msj = `🛒 *CARRITO MULTISHOP CCS* 🛒\n\n👤 ${cNombre}\n\n*Artículos:*\n${detalleArticulos}\n💰 *Total Pagado:* $${totalMontoPagado.toFixed(2)}\n\n👀 Comprobante: ${urlComprobante}`;
                 
                 Swal.fire({ title: '¡Pedido Completo!', text: 'Redirigiendo a WhatsApp...', icon: 'success', timer: 2000, showConfirmButton: false }).then(() => {
-                    window.location.href = `https://wa.link/gq8qur?text=${msj}`;
+                    // Usamos la API de WhatsApp y codificamos el texto completo
+                    window.location.href = `https://api.whatsapp.com/send?phone=584129387217&text=${encodeURIComponent(msj)}`;
                 });
             } catch (error) { Swal.fire('Error', 'Foto muy pesada.', 'error');
             } finally { 
@@ -974,7 +979,9 @@
             const nombre = document.getElementById('enc-nombre').value.trim();
             if(!link || !nombre) { Swal.fire('Error', 'Faltan datos.', 'warning'); return; }
             cerrarEncargo();
-            window.location.href = `https://wa.link/gq8qur?text=✈️ *ENCARGO MULTISHOP* ✈️%0A%0ASoy ${nombre}. Cotízame:%0A${link}`;
+            
+            let msj = `✈️ *ENCARGO MULTISHOP* ✈️\n\nSoy ${nombre}. Cotízame:\n${link}`;
+            window.location.href = `https://api.whatsapp.com/send?phone=584129387217&text=${encodeURIComponent(msj)}`;
         }
     </script>
 </body>
